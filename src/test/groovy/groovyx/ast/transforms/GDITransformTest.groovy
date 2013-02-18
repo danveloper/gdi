@@ -18,6 +18,7 @@ class GDITransformTest {
         """
         def invoker = new TransformTestHelper(new GDITransformation(), CompilePhase.CANONICALIZATION)
         def instance = invoker.parse(script)
-        instance.methods.find {it.name == "getMyService"}
+        assert instance.methods.find {it.name == "getMyService"}
     }
+
 }

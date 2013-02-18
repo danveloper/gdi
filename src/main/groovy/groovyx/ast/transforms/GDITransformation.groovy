@@ -32,6 +32,7 @@ public class GDITransformation implements ASTTransformation {
                 def key = mapEntryExpression.keyExpression.value
                 def value = mapEntryExpression.valueExpression.type
                 classNode.addMethod(createDIGetter(key, value.name))
+                classNode.addMethod(createStaticRegister(value.name))
             }
         }
     }
@@ -55,6 +56,28 @@ public class GDITransformation implements ASTTransformation {
             """)
 
             return ast[1].methods.find { it.name == "get${newName}" }
+        } catch (e) {
+            throw e
+        }
+    }
+
+    private MethodNode createStaticRegister(clazzName) {
+        def clazzParts = clazzName.split("\\.")
+        def packageName = clazzParts[0..clazzParts.size()-2]
+        def shortName = clazzParts[-1]
+
+        try {
+            def ast = new AstBuilder().buildFromString(CompilePhase.INSTRUCTION_SELECTION, false, """
+                package ${packageName.join(".")}
+
+                class ${shortName} {
+                    static {
+                       groovyx.gdi.registrar.ObjectRegistrar.register(${clazzName}.class)
+                    }
+                }
+            """)
+
+            return ast[1].methods.find { it.name == "<clinit>" }
         } catch (e) {
             throw e
         }

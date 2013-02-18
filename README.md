@@ -37,12 +37,10 @@ Usage
 ---
 GDI requires a static `scope` field to be added to classes that will be injection candidates. The `scope` is an enum instance of type `InjectionScope`. The two valid types are `SINGLETON` and `PROTOTYPE`. The declared `scope` value will dictate how the ObjectRegistrar handles the class' injection into consumer classes.
 
-    ## `SINGLETON`
+  ## `SINGLETON`
     Classes scoped as `SINGLETON` will be instantiated once and that same instance will be given to classes who have it injected.
 
-
-
-    ## `PROTOTYPE`
+  ## `PROTOTYPE`
     Classes scoped as `PROTOTYPE` will be instantiated for each instance of a class.
 
 A static `injected` field is required in a class that is intending to inject dependencies. The `injected` field is a key value pair of `String` and `Class` types. The `String` key of the map will dictate how the class will reference the injected object. Dependencies are always injected by name. The `Class` value is the injection candidate.

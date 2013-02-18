@@ -60,7 +60,8 @@ Here is an example usage of GDI:
        static injected = [myService: MyService]
 
        void saySomethingNice() {
-          getMyService().tellMeImPretty()
+          // calls "getMyService()"
+          myService.tellMeImPretty()
        }
     }
 ```
@@ -88,7 +89,7 @@ Here is an example usage of GDI:
           ObjectRegistrar.register(MyService)
 
           def main = new Main()
-          def controller = main.getMyController()
+          def controller = main.myController // calls "main.getMyController()"
           controller.saySomethingNice() // "You're Pretty :)"
        }
     }

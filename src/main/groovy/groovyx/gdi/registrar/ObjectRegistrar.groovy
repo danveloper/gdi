@@ -10,17 +10,6 @@ class ObjectRegistrar {
 
     static prototypeInstances = Collections.synchronizedMap([:])
 
-    private static boolean initialized = false
-
-    static {
-        ObjectRegistrar.class.declaredMethods { method ->
-            if (method.isSynthetic()) return
-            if (method.name.startsWith("init_")) {
-                ObjectRegistrar."${method.name}"()
-            }
-        }
-    }
-
     static void register(Class clazz) {
         def name = clazz.simpleName.substring(0,1).toLowerCase() + clazz.simpleName.substring(1)
 

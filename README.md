@@ -45,7 +45,7 @@ GDI requires a static `scope` field to be added to classes that will be injectio
 
 A static `injected` field is required in a class that is intending to inject dependencies. The `injected` field is a key value pair of `String` and `Class` types. The `String` key of the map will dictate how the class will reference the injected object. Dependencies are always injected by name. The `Class` value is the injection candidate.
 
-Classes must be registered with the `ObjectRegistrar`. The `ObjectRegistrar` class has a static `register` method that takes a single `Class` parameter. A present limitation of the GDI framework is that it can handle only one type each class. Future revisions will include the ability to inject by name and therein allow different instances of the same type to be injected.
+Classes will be automatically registered with the `ObjectRegistrar`. The `ObjectRegistrar` class has a static `register` method that takes a single `Class` parameter that gets invoked in a `static` initialization block of the candidate class. This way, as a developer using the GDI framework, you don't have to take any additional steps to register the candidate class with the `ObjectRegistrar`. A present limitation of the GDI framework is that it can handle only one type each class. Future revisions will include the ability to inject by name and therein allow different instances of the same type to be injected.
 
 Sample
 ---
@@ -85,9 +85,6 @@ Here is an example usage of GDI:
        static injected = [myController: MyController]
 
        public static void main(String[] args) {
-          ObjectRegistrar.register(MyController)
-          ObjectRegistrar.register(MyService)
-
           def main = new Main()
           def controller = main.myController // calls "main.getMyController()"
           controller.saySomethingNice() // "You're Pretty :)"

@@ -1,0 +1,27 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+group = "groovyx.gdi"
+version = "0.1-SNAPSHOT"
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	groovy 'org.codehaus.groovy:groovy-all:2.1.0'
+    testCompile 'junit:junit:4.10'
+}
+
+task generateModule << {
+    new File("$buildDir/classes/main/META-INF/services").with { f ->
+        f.mkdirs()
+        new File(f, "org.codehaus.groovy.transform.ASTTransformation").withWriter { w ->
+            w.write("groovyx.ast.transforms.GDITransformation")
+        }
+    }
+}
+
+jar.dependsOn(generateModule)

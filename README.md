@@ -29,7 +29,7 @@ dependencies {
 <dependency>
    <groupId>groovyx.gdi</groupId>
    <artifactId>gdi</artifactId>
-   <version>0.1-SNAPSHOT</version>
+   <version>0.1a-SNAPSHOT</version>
 </dependency>
 ```
 

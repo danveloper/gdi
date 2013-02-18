@@ -9,6 +9,26 @@ Compilation
 ---
 `./gradlew clean install`
 
+Artifact
+---
+After compiling and installing, you can use it likeso:
+
+  ## Build.gradle
+```groovy
+dependencies {
+   compile 'groovyx.gdi:gdi:0.1-SNAPSHOT'
+}
+```
+
+  ## pom.xml
+```XML
+<dependency>
+   <groupId>groovyx.gdi</groupId>
+   <artifactId>gdi</artifactId>
+   <version>0.1-SNAPSHOT</version>
+</dependency>
+```
+
 Usage
 ---
 GDI requires a static `scope` field to be added to classes that will be injection candidates. The `scope` is an enum instance of type `InjectionScope`. There are two valid options `SINGLETON` and `PROTOTYPE` and these values will dictate how the ObjectRegistrar handles the class' injection into consumer classes.

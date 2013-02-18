@@ -3,7 +3,11 @@ Groovy Dependency Injection
 
 Overview
 ---
-GDI is a simple dependency injection platform for Groovy that employs compile-time transformations to assist with class-level dependency injection.
+GDI is a simple, yet powerful, compile-time-assisted dependency injection framework for Groovy.
+
+Disclaimer
+---
+This is a primitive first shot at doing this. I used the `groovyx.gdi` package namespace, and I can't guarantee that future revisions will preserve this. IOW, the code at this point should be treated as an extreme alpha release.
 
 Compilation
 ---

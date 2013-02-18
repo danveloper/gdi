@@ -25,3 +25,7 @@ task generateModule << {
 }
 
 jar.dependsOn(generateModule)
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.4'
+}

@@ -20,7 +20,7 @@ After compiling and installing, you can use it likeso:
   ## build.gradle
 ```groovy
 dependencies {
-   compile 'groovyx.gdi:gdi:0.1-SNAPSHOT'
+   compile 'groovyx.gdi:gdi:0.1a-SNAPSHOT'
 }
 ```
 

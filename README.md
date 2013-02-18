@@ -17,7 +17,7 @@ Artifact
 ---
 After compiling and installing, you can use it likeso:
 
-  ## Build.gradle
+  ## build.gradle
 ```groovy
 dependencies {
    compile 'groovyx.gdi:gdi:0.1-SNAPSHOT'
